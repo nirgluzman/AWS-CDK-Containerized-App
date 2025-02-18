@@ -34,6 +34,19 @@ containerized-app
 - `package.json`: Lists dependencies for our application (for TypeScript).
 - `cdk.json`: Configuration for our CDK app.
 
+## CDK Bootstrapping
+
+https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html
+https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping-env.html
+
+- Bootstrapping prepares your AWS environment by provisioning specific AWS resources in your
+  environment that are used by the AWS CDK. These resources are commonly referred to as your
+  bootstrap resources.
+
+```bash
+cdk bootstrap
+```
+
 ## Pushing a Docker image to an Amazon ECR private repository
 
 https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
