@@ -89,3 +89,10 @@ docker push <ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/<REPOSITORY_NAME>
 ```
 
 4. (Optional) Apply any additional tags to the image and push those tags to Amazon ECR.
+
+## Configuring OpenID Connect in AWS (for GitHub Actions)
+
+https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services
+
+- OpenID Connect (OIDC) allows your GitHub Actions workflows to access resources in AWS, without
+  needing to store the AWS credentials as long-lived GitHub secrets.
