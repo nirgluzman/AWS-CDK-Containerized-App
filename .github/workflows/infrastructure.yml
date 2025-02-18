@@ -1,0 +1,48 @@
+name: Deploy infrastructure with AWS CDK
+
+# Trigger(s) for the workflow
+on:
+  workflow_dispatch:
+  push:
+    branches: [infra]
+
+env:
+  AWS_REGION: us-east-1
+
+# These permissions are needed to interact with GitHub's OIDC Token endpoint.
+# https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#updating-your-github-actions-workflow
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read # This is required for actions/checkout
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Node v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install the CDK dependency
+        run: |
+          npm install -g aws-cdk
+
+      - name: Install project dependencies
+        run: npm ci
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_OIDC_ROLE}}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Deploy to AWS
+        run: cdk deploy --all --require-approval never
