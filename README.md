@@ -47,6 +47,24 @@ https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping-env.html
 cdk bootstrap
 ```
 
+## Environments for the AWS CDK
+
+https://docs.aws.amazon.com/cdk/v2/guide/environments.html
+
+- An environment consists of the AWS account and AWS Region that you deploy an AWS CDK stack to.
+- You can pass environment information from these files in your CDK code through environment
+  variables that are provided by the CDK.
+- The following is an example of specifying these environment variables in your CDK code:
+
+```js
+new MyDevStack(app, 'dev', {
+  env: {
+    account: process.env.CDK_DEFAULT_ACCOUNT,
+    region: process.env.CDK_DEFAULT_REGION,
+  },
+});
+```
+
 ## Pushing a Docker image to an Amazon ECR private repository
 
 https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
