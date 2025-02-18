@@ -1,0 +1,24 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "node:build": "tsc --project tsconfig.json",
+    "node:start": "node ./build/index.js",
+    "docker:build": "docker build -t my-node-app .",
+    "docker:run": "docker run -p 80:80 my-node-app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.4",
+    "typescript": "^5.7.3"
+  }
+}
