@@ -65,6 +65,16 @@ new MyDevStack(app, 'dev', {
 });
 ```
 
+## Create AWS ECR repository if it doesn't exist (AWS CLI)
+
+https://stackoverflow.com/questions/51028677/create-aws-ecr-repository-if-it-doesnt-exist
+
+- AWS creates a repository only if it doesn't exist.
+
+```bash
+aws ecr create-repository --repository-name <repo_name> || true
+```
+
 ## Pushing a Docker image to an Amazon ECR private repository
 
 https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
